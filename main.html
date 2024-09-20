@@ -10,15 +10,22 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			let uniarr=[... new Set(arr)].sort((a,b)=> b-a)
-			return uniarr[1];
+			let numArr = arr.map(Number);
+			// Remove duplicates and sort in descending order
+			let uniqueArr = [...new Set(numArr)].sort((a, b) => b - a);
+			
+			// If there are fewer than 2 unique numbers, return -Infinity
+			if (uniqueArr.length < 2) {
+				return -Infinity;
+			}
+			return uniqueArr[1];
 		}
 
 		function Main() {
-			var n = prompt("Enter the number of elements");
+		var n = prompt("Enter the number of elements");
 			var arr = [];
 			for (var i = 0; i < n; i++) {
-				// arr[i] = prompt("Enter element " + (i+1));
+				 arr[i] = prompt("Enter element " + (i+1));
 			}
 			alert(secondHighest(arr));
 		}
