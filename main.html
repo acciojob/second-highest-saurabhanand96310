@@ -10,15 +10,23 @@
 	<script>
 		function secondHighest(arr) {
 			//Write your code here
-			let numArr = arr.map(Number);
-			// Remove duplicates and sort in descending order
-			let uniqueArr = [...new Set(numArr)].sort((a, b) => b - a);
-			
-			// If there are fewer than 2 unique numbers, return -Infinity
-			if (uniqueArr.length < 2) {
-				return -Infinity;
-			}
-			return uniqueArr[1];
+			let first = -Infinity;
+    let second = -Infinity;
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > first) {
+            second = first;
+            first = arr[i];
+        } else if (arr[i] > second && arr[i] != first) {
+            second = arr[i];
+        }
+    }
+
+    if (second == -Infinity) {
+        return -Infinity;
+    } else {
+        return second;
+    }
 		}
 
 		function Main() {
